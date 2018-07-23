@@ -31,10 +31,14 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-di
         mcrypt pcntl readline shmop soap sockets wddx zip
 
 # Install oci8
-RUN mkdir -p /opt/oci8 \
-    && cd /opt/oci8 \
-    && wget https://s3.amazonaws.com/simonetti-tests/oci8/instantclient-basic-linux.x64-12.1.0.2.0.zip \
-    && wget https://s3.amazonaws.com/simonetti-tests/oci8/instantclient-sdk-linux.x64-12.1.0.2.0.zip \
+RUN mkdir -p /opt/oci8
+COPY instantclient-basic-linux.x64-12.1.0.2.0.zip /opt/oci8
+COPY instantclient-sdk-linux.x64-12.1.0.2.0.zip /opt/oci8
+#RUN mkdir -p /opt/oci8 \
+#    && cd /opt/oci8 \
+RUN cd /opt/oci8 \
+#    && wget https://s3.amazonaws.com/simonetti-tests/oci8/instantclient-basic-linux.x64-12.1.0.2.0.zip \
+#    && wget https://s3.amazonaws.com/simonetti-tests/oci8/instantclient-sdk-linux.x64-12.1.0.2.0.zip \
     && unzip instantclient-sdk-linux.x64-12.1.0.2.0.zip \
     && unzip instantclient-basic-linux.x64-12.1.0.2.0.zip \
     && cd instantclient_12_1/ \
