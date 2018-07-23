@@ -1,6 +1,5 @@
 # Container Base
 FROM php:7.0-apache
-# FROM php:7.0-cli
 
 ENV http_proxy ${HTTP_PROXY}
 ENV https_proxy ${HTTP_PROXY}
@@ -56,8 +55,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ 
 
 # Install XDebug
 RUN pecl install xdebug
+    && docker-php-ext-enable xdebug
 
-# Run composer install
 CMD /usr/bin/apache-run
 
 EXPOSE 8080
