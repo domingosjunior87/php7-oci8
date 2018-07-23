@@ -7,6 +7,7 @@ ENV https_proxy ${HTTP_PROXY}
 ENV NR_ENABLED=false
 ENV NR_APP_NAME=""
 ENV NR_LICENSE_KEY=""
+ENV LD_LIBRARY_PATH /usr/local/instantclient_12_1/
 
 COPY configs/ports.conf /etc/apache2/ports.conf
 COPY apache-run.sh /usr/bin/apache-run
